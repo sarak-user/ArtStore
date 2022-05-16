@@ -1,0 +1,133 @@
+﻿@model Art_SaraKaminer.Product
+
+@{
+	ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>Product</h4>
+	<hr />
+	<div class="row">
+		<dl class="dl-horizontal col-md-6">
+			<dt>
+				@Html.DisplayNameFor(model => model.Id)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.Id)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.CategoryId)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.CategoryId)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Category)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.Category)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Size)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.Size)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Price)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.Price)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Title)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.Title)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.ArtDescription)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.ArtDescription)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.ArtDating)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.ArtDating)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.ArtId)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.ArtId)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Artist)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.Artist)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.ArtistBirthDate)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.ArtistBirthDate)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.ArtistDeathDate)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.ArtistDeathDate)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.ArtistNationality)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.ArtistNationality)
+			</dd>
+
+		</dl>
+		<div class="dl-horizontal col-md-6">
+			@*<img src='~/images/@Html.DisplayFor(model => model.ArtId)+".jpg"' />*@
+
+			
+			@*<img src='~/images/@Html.DisplayFor(model => model.ArtId+".jpg")' />*@
+			@{ var image_link = "images/" + @Html.DisplayFor(model => model.ArtId) + ".jpg"; }
+
+			<img src="@image_link" />
+		</div>
+	</div>
+</div>
+<p>
+	@Html.ActionLink("  Add to Shopping Cart", "Buy", new { id = Model.ProductId,OrderId = Request.QueryString["OrderId"] },new { @class = "btn btn-default fa fa-shopping-cart" }) |
+	@Html.ActionLink("Back to List", "Index", new { OrderId = Request.QueryString["OrderId"] },new { @class = "btn btn-default fa fa-list-alt" })
+</p>
