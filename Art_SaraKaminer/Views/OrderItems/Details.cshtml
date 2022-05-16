@@ -1,0 +1,66 @@
+﻿@model Art_SaraKaminer.OrderItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderItem</h4>
+    <hr />
+	<dl class="dl-horizontal">
+
+		<dt>
+			@Html.DisplayNameFor(model => model.ProductId)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ProductId)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Title)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Title)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.ArtDescription)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ArtDescription)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Price)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Price)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Amount)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Amount)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.TotalPrice)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.TotalPrice)
+		</dd>
+
+	</dl>
+</div>
+<p>
+	@Html.ActionLink(linkText: "Back to List", actionName: "Index", controllerName: "OrderItems", routeValues: new { OrderId = Request.QueryString["OrderId"] }, htmlAttributes: null)
+</p>

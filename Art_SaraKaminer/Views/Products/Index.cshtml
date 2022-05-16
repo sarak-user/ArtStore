@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Art_SaraKaminer.Product>
+
+@{
+	ViewBag.Title = "Store";
+}
+
+<h2>Store</h2>
+<h6>
+	@Html.ActionLink(linkText: "  Shopping Cart", actionName: "Index", controllerName: "OrderItems", routeValues: new { OrderId = Request.QueryString["OrderId"] }, htmlAttributes: new { @class = "btn btn-default fa fa-shopping-cart" }) 
+	@Html.ActionLink(linkText: "  End Order ", actionName: "Create", controllerName: "Users", routeValues: new { OrderId = Request.QueryString["OrderId"] }, htmlAttributes: new { @class = "btn btn-default fa fa-credit-card" })
+</h6>
+<br />
+<div class="container">
+	@foreach (var item in Model)
+	{
+		<div style="border:outset; min-height:500px;" class="col-md-3">
+			<h2>
+				@Html.DisplayFor(modelItem => item.Title)
+			</h2>
+			<img src='~/images/@(item.ArtId+".jpg")' style="width:50px;height:50px;" />
+			<h4>
+				<b>Size: </b>@Html.DisplayFor(modelItem => item.Size)
+			</h4>
+			<h4>
+				<b>Price: </b>@Html.DisplayFor(modelItem => item.Price)
+			</h4>
+			<h4>
+				<b>Category: </b>@Html.DisplayFor(modelItem => item.Category)
+			</h4>
+			<h4>
+				<b>Artist: </b>@Html.DisplayFor(modelItem => item.Artist)
+			</h4>
+
+
+			<h4>
+				<b>Description: </b>
+			</h4>
+			<p>
+				@Html.DisplayFor(modelItem => item.ArtDescription)@*.ToString().Substring(0, 100) + '...'*@
+			</p>
+			<div>
+				@Html.ActionLink(linkText: "  Details", actionName: "Details", controllerName: "Products", routeValues: new { id = item.ProductId, OrderId = Request.QueryString["OrderId"] }, htmlAttributes: new { @class = "btn btn-default fa fa-info-circle",@style="font-size: 1.2rem;" })
+				@Html.ActionLink(linkText: "  Add to Shopping Cart", actionName: "Buy", controllerName: "Products", routeValues: new { id = item.ProductId, OrderId = Request.QueryString["OrderId"] }, htmlAttributes: new { @class = "btn btn-default fa fa-cart-plus",@style="font-size: 1.2rem;" })
+			</div>
+			<br />
+		</div>
+	}
+
+</div>

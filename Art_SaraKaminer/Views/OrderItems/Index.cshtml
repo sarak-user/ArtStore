@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Art_SaraKaminer.OrderItem>
+
+@{
+	ViewBag.Title = "Shopping Cart";
+}
+
+<h2>Shopping Cart</h2>
+<br />
+@Html.ActionLink(linkText: "  Back to Products List", actionName: "Index", controllerName: "Products", routeValues: new { OrderId = Request.QueryString["OrderId"] }, htmlAttributes: new { @class = "btn btn-default fa fa-list-alt" })
+@Html.ActionLink(linkText: "  End Order ", actionName: "Create", controllerName: "Users", routeValues: new { OrderId = Request.QueryString["OrderId"] }, htmlAttributes: new { @class = "btn btn-default fa fa-credit-card" })
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.OrderId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ProductId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Price)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Amount)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TotalPrice)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.OrderId)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ProductId)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Price)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Amount)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.TotalPrice)
+			</td>
+			<td>
+				@Html.ActionLink("Details", "Details", new { id = item.OrderItemId }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.OrderItemId })
+
+				@*@Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "OrderItems", routeValues: new { OrderId = Request.QueryString["OrderId"] }, htmlAttributes: null) |
+					@Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "OrderItems", routeValues: new{OrderId = Request.QueryString["OrderId"]}, htmlAttributes: null)*@
+
+			</td>
+		</tr>
+	}
+
+</table>
+@*<div>
+	<dt>Total price to order:</dt>
+	<dd>Request.QueryString["TotalPriceOrder"]</dd>
+</div>*@
